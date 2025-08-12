@@ -16,7 +16,7 @@ avg_price_by_brand = df.groupby('brand')['curr_price'].mean().sort_values()
 lowest_avg_price_brand = avg_price_by_brand.idxmin()
 lowest_avg_price = avg_price_by_brand.min()
 
-print(f"The brand with the lowest average price is '{lowest_avg_price_brand}' with an average price of KES {lowest_avg_price:.2f}.")
+print("The provided chart reveals a tiered market where brands compete on different fronts. The lowest-priced brands like rashnik and mika dominate the entry-level segment by offering affordability, while the mid-range brands such as ramtons and haier are locked in tight competition for the value-conscious customer. At the highest end, premium brands like midea and the outlier ecomax compete on perceived quality and brand status rather than price, with ecomax potentially targeting a luxury niche.")
 print("-" * 50)
 
 plt.figure(figsize=(12, 6))
@@ -34,7 +34,7 @@ df['discount'] = df['discount'].astype(str).str.replace('%', '', regex=False).as
 
 overall_avg_discount = df['discount'].mean()
 
-print(f"The average discount percentage across all products is: {overall_avg_discount:.2f}%")
+print('The Overall Average Discount Percentage pie chart shows that, on average, products in the dataset are discounted by 27.1%. This means that roughly a quarter of the total product value is being discounted at the time of the scrape. The large Remaining Value slice of 72.9% simply represents the portion of the price that is not being discounted, providing context for the discounts magnitude. This analysis confirms that discounts are a significant factor across the marketplace, but the majority of the product value remains undiscounted.')
 print("-" * 50)
 
 labels = ['Average Discount', 'Remaining Value']
@@ -55,7 +55,7 @@ avg_discount_by_brand = df.groupby('brand')['discount'].mean().sort_values(ascen
 highest_avg_discount_brand = avg_discount_by_brand.idxmax()
 highest_avg_discount = avg_discount_by_brand.max()
 
-print(f"The brand with the highest average discount percentage is '{highest_avg_discount_brand}' with an average discount of {highest_avg_discount:.2f}%.")
+print("Based on the 'Average Discount Percentage by Brand' chart, there is a clear inverse relationship between a brand's average price and its average discount. Brands in the entry-level price tier, like aillyons, em, and von, offer the highest average discounts, all over 40%, indicating a strategy focused on attracting customers with aggressive promotions. Conversely, the more expensive brands like rashnik and ecomax, which were at the higher end of the price chart, offer the lowest average discounts, at around 15%. This suggests that these premium brands rely on their brand value rather than price promotions to drive sales.")
 print("-" * 50)
 
 plt.figure(figsize=(12, 6))
@@ -70,6 +70,9 @@ plt.show()
 print("Question 4: Is the rating worth the price?")
 
 df['rating'] = df['rating'].astype(str).str.extract(r'(\d+\.?\d*)').astype(float)
+
+print("The scatter plot shows no strong correlation between product rating and price. Most products, regardless of their cost, are highly rated between 4.0 and 5.0 stars. This suggests that price isn't a primary indicator of customer satisfaction on this marketplace. There are a few outliers, including a product with a low rating at a high price, indicating a potential mismatch between a product's cost and its perceived value.")
+print("-" * 50)
 
 plt.figure(figsize=(12, 8))
 plt.scatter(df['curr_price'], df['rating'], alpha=0.7, color='green')
@@ -89,7 +92,7 @@ avg_rating_by_brand = df.groupby('brand')['rating'].mean().sort_values(ascending
 highest_avg_rating_brand = avg_rating_by_brand.idxmax()
 highest_avg_rating = avg_rating_by_brand.max()
 
-print(f"The brand with the highest average rating is '{highest_avg_rating_brand}' with an average rating of {highest_avg_rating:.2f}.")
+print("Based on the 'Average Rating by Brand' chart, there is a very high level of customer satisfaction across most of the brands. The majority of brands, including the highest-rated brand maxmo, fall within a tight average rating band of 4.3 to 4.8 stars. This suggests that the marketplace is populated with reliable products, and that the differences in average ratings are minor. The brands with lower average ratings, such as roch, vision, and aillyons, may have a small number of poorly rated products, which slightly pulls down their overall average, but they are still generally well-regarded with ratings above 3.0.")
 print("-" * 50)
 
 plt.figure(figsize=(12, 6))
