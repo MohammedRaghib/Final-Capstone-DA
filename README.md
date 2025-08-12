@@ -28,7 +28,7 @@ The project's visualizations are designed to answer the following questions:
 ***
 
 ## Requirements
-To run the `analysis_script.py` file, you need to have the following Python libraries installed:
+To run the `matplotvisual.py` file, you need to have the following Python libraries installed:
 
 * `pandas`
 * `matplotlib`
