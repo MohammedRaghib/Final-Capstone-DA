@@ -55,6 +55,10 @@ def get_product_info(items, url):
                 'discount': discount,
                 'rating': rating
             })
+            
+    for product in products:
+        brand = product['name'].split()[0]
+        product['brand'] = brand.lower()
 
     return products
 
@@ -70,14 +74,6 @@ url = 'https://www.jumia.co.ke/home-office-appliances/'
 html = get_html(url)
 items = get_products(html)
 products = get_product_info(items, url)
-
-brand_names = []
-for product in products:
-    brand = product['name'].split()[0]
-    if not brand in brand_names:
-        brand_names.append(brand.lower())
-    
-    product['brand'] = brand.lower()
 
 products_df = pd.DataFrame(products)
 
