@@ -70,6 +70,8 @@ plt.show()
 print("Question 4: Is the rating worth the price?")
 
 df['rating'] = df['rating'].astype(str).str.extract(r'(\d+\.?\d*)').astype(float)
+mask = df['rating'] > 0
+df = df[mask]
 
 print("The scatter plot shows no strong correlation between product rating and price. Most products, regardless of their cost, are highly rated between 4.0 and 5.0 stars. This suggests that price isn't a primary indicator of customer satisfaction on this marketplace. There are a few outliers, including a product with a low rating at a high price, indicating a potential mismatch between a product's cost and its perceived value.")
 print("-" * 50)
